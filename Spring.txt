@@ -1,1 +1,1 @@
-This is the Spring.
+This is the repository that I learned watching Spring lectures.
