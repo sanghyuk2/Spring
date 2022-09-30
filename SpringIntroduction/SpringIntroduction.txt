@@ -1,0 +1,5 @@
+static 폴더
+html을 화면 상에 나타나게끔 한다.
+웹 브라우저 -> 내장 톰켓 서버가 요청을 받음 -> 스프링 컨테이너가 컨트롤러에서 html파일을 찾음 -> resource파일의 html파일을 찾음 -> 반환 
+
+MVC(Model, View, Controller) 와 템플릿 엔진
