@@ -3,3 +3,19 @@ html을 화면 상에 나타나게끔 한다.
 웹 브라우저 -> 내장 톰켓 서버가 요청을 받음 -> 스프링 컨테이너가 컨트롤러에서 html파일을 찾음 -> resource파일의 html파일을 찾음 -> 반환 
 
 MVC(Model, View, Controller) 와 템플릿 엔진
+템플릿 엔진 : htlm을 변환시켜 화면에 나타냄
+
+
+@ResponseBody :
+
+1. Controller가 메소드 찾음.
+Annotation을 확인하고 HTTP Body에 문자 내용을 직접 반환하겠다고 함.
+
+2. HttpMessageConverter(JsonConverter, StringConverter)가 작동한다.
+
+문자인 경우(StringHttpMessageConverter)
+그냥 넘김.
+
+객체인 경우(MappingJackson2HttpMessageConverter)
+json방식으로 데이터를 형성하여 http응답에 반환하겠다.
+
