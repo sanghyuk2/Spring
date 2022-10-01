@@ -3,15 +3,21 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 //Ctrl + shift + t를 이용하여 클래스 테스트 케이스 만들기.
+//spring이 올라올 때, MemberService객체를 @Service 어노테이션을 보고 넣어준다.
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    //MemberService가 등록이 될 때 스프링 컨테이너에 있는 @Autowired 어노테이션 처리된 MemoryMemberRepository 객체를 주입해준다.
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

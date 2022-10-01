@@ -22,9 +22,13 @@ class MemberServiceTest {
     //해결 방법 : MemberService 클래스에서 new MemoryMemberRepository() 사용하지말고 생성자를 사용하여 외부에서 넣어주도록 바꿈.
     MemoryMemberRepository memberRepository;
 
-    //DI(Dependency Injection) : 의존관계 주입.
+    //DI(Dependency Injection) : 클래스간의 의존관계를 스프링 컨테이너가 자동으로 연결해 주는 겻을 말한다.
+    //ex) 클래스A가 클래스 B,C와 상호작용한다면 객체 A는 객체 B,C와 의존관계이다.
+    //필요한 이유 :
     //MemberService입장에서는 외부에서 생성자를 통하여 데이터를 주입함.
-    //풀어말하면, 클라이언트가 어떤 서비스를 사용할 것인지 지정하는 대신, 클라이언트에게 무슨 서비스를 사용할 것인지를 말해주는 것이다
+    //풀어말하면, 클라이언트가 어떤 서비스를 사용할 것인지 지정하는 대신, 클라이언트에게 무슨 서비스를 사용할 것인지를 말해주는 것이다.
+    //왜냐하면, 클라이언트마다 전용 멤버서비스를 만들 때마다 코드 생산성이 떨어지며 고객이 몰라도 되는 코드가 노출되기 때문이다.
+    //따라서 프레임워크가 자동으로 객체간 의존성을 주입해준다.
     @BeforeEach
     public void beforeEach() {
         memberRepository = new MemoryMemberRepository();
