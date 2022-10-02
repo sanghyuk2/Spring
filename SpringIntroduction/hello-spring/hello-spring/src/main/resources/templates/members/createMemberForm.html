@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <label for="name">이름</label>
+            <!--name="name"을 보고 MemberForm의 인스턴스 변수인 name에 setName메소드를 이용하여 placeholder에서 받은 값을 전달한다.-->
+            <input type="text" id="name" name="name" placeholder="이름을
+입력하세요">
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

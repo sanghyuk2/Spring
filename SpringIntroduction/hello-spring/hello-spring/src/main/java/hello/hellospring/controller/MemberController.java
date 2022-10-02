@@ -1,8 +1,11 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 //스프링이 @Controller 어노테이션을 확인하고 MemberController 객체를 가지고 있는다.
 //== 스프링 빈이 관리된다.
@@ -18,5 +21,21 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @GetMapping("/members/new")
+    public String createForm() {
+        return "members/createMemberForm";
+    }
+
+    @PostMapping("/members/new")
+    public String create(MemberForm form) {
+        Member member = new Member();
+        //MemberForm 컨트롤러의 인스턴스변수 name(createMemberForm.html로부터 받은 값 저장한 변수)를 도메인 객체인 member에 넣는다.
+        member.setName(form.getName());
+
+        memberService.join(member);
+
+        return "redirect:/";
     }
 }
