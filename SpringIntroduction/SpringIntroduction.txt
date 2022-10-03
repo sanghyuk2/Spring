@@ -46,6 +46,7 @@ Ctrl + shift + t를 이용하여 클래스 테스트 케이스  쉽게 만들기
 리팩토링 : Ctrl + Alt + Shift + T
 이전 실행 다시 실행 : shift + f10
 최근 목록 : Ctrl + E
+최근 실행 다시 실행 : Ctrl + Shift + F10
 
 DI(Dependency Injection)란 @Autowired 개념을 알기 위해 먼저 DI 개념을 알아야 합니다. 
 DI(의존성 종속, Dependency Injection)란, 클래스간의 의존관계를 스프링 컨테이너가 자동으로 연결해주는 것을 말합니다. 
@@ -138,3 +139,6 @@ jdbc : 데이터베이스와 어플리케이션 서버를 연결하는 기술
 
 통합테스트보다 단위테스트가 좋을 확률이 높다.
 
+
+스프링 JdbcTemplate과 MyBatis 같은 라이브러리는 JDBC API에서 본 반복 코드를 대부분
+제거해준다. 하지만 SQL은 직접 작성해야 한다.

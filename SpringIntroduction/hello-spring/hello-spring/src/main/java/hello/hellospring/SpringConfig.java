@@ -1,6 +1,7 @@
 package hello.hellospring;
 
 import hello.hellospring.repository.JdbcMemberRepository;
+import hello.hellospring.repository.JdbcTemplateMemberRepository;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import hello.hellospring.service.MemberService;
@@ -36,6 +37,7 @@ public class SpringConfig {
         //return new MemoryMemberRepository();
         //이 프로젝트의 조건 : 아직 데이터 저장소가 선정되지 않음(가상의 시나리오)
         //저장소를 임시 저장소인 memoryRepository로 선정한 후 실제 데이터베이스가 선정되었을 때 클래스 하나 바꿈으로서 나머지 코드의 변환없이 사용가능하다.
-        return new JdbcMemberRepository(dataSource);
+        //return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
