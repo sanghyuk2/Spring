@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+//내가 생각하는 Controller의 역할 : 웹과 붙어서 자바 내부구조와 연동시켜주는 다리 역할!
 @Controller
 public class HelloController {
 
