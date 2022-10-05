@@ -15,12 +15,19 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private EntityManager em;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
+
+    //    private EntityManager em;
+
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
 
     //    private DataSource dataSource;
 //
@@ -35,16 +42,16 @@ public class SpringConfig {
     @Bean
     public MemberService memberService() {
         //생성자에 memberReposotory()를 넣어줌으로써 인자에게 전달한다.
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
-        //return new MemoryMemberRepository();
-        //이 프로젝트의 조건 : 아직 데이터 저장소가 선정되지 않음(가상의 시나리오)
-        //저장소를 임시 저장소인 memoryRepository로 선정한 후 실제 데이터베이스가 선정되었을 때 클래스 하나 바꿈으로서 나머지 코드의 변환없이 사용가능하다.
-        //return new JdbcMemberRepository(dataSource);
-        //return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//        이 프로젝트의 조건 : 아직 데이터 저장소가 선정되지 않음(가상의 시나리오)
+//        저장소를 임시 저장소인 memoryRepository로 선정한 후 실제 데이터베이스가 선정되었을 때 클래스 하나 바꿈으로서 나머지 코드의 변환없이 사용가능하다.
+//        return new JdbcMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JpaMemberRepository(em);
+//    }
 }
