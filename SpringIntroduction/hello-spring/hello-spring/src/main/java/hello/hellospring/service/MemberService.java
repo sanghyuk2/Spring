@@ -29,9 +29,9 @@ public class MemberService {
     //wrapper클래스 Long이다.
     public Long join(Member member) {
 
-        long start = System.currentTimeMillis();
+//        long start = System.currentTimeMillis();
 
-        try{
+//        try{
             //같은 이름의 중복 회원X
             //변수 추출하기 : Ctrl + Alt + V, 알아서 반환해줌.
             //리팩토링 : Ctrl + Alt + Shift + T
@@ -39,11 +39,11 @@ public class MemberService {
 
             memberRepository.save(member);
             return member.getId();
-        }finally {
-            long finish = System.currentTimeMillis();
-            long timeMs = finish - start;
-            System.out.println("join = " + timeMs);
-        }
+//        }finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//            System.out.println("join = " + timeMs);
+//        }
 
 
     }
@@ -57,14 +57,14 @@ public class MemberService {
 
     //전체 회원 조회
     public List<Member> findMembers() {
-        long start = System.currentTimeMillis();
-        try {
+//        long start = System.currentTimeMillis();
+//        try {
             return memberRepository.findAll();
-        } finally {
-            long finish = System.currentTimeMillis();
-            long timeMs = finish - start;
-            System.out.println("findMembers = " + timeMs);
-        }
+//        } finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//            System.out.println("findMembers = " + timeMs);
+//        }
     }
 
     public Optional<Member> findOne(Long memberId) {
