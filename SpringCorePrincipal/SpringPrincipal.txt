@@ -64,3 +64,8 @@ ISP : 인터페이스 분리 원칙(Interface Segregation Principle)
 인터페이스가 명확해지고, 대체 가능성이 높아진다.
 
 DIP : 의존관계 역전 원칙(Dependency Inversion Principle)
+구현 클래스에 의존하지 말고, 인터페이스에 의존하라는 뜻
+역할(Role)에 의존하게 해야 한다는 것과 같다.
+의존한다는 의미는 쉽게 말하면, 코드에 대해서 안다와 같은 의미이다.
+
+다형성 만으로는 OCP, DIP를 지킬 수 없다. 자바의 한계!!
