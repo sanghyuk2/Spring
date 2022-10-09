@@ -13,9 +13,10 @@ public class ApplicationContextInfoTest {
     @Test
     @DisplayName("모든 빈 출력하기")
     void findAllBean() {
+        //메소드 이름들을 반환한다.
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
-            //type을 모르기 때문에 Object로 반환된다.
+            //반환되는 객체 타입을 모르기 때문에 Object로 반환된다.
             Object bean = ac.getBean(beanDefinitionName);
             System.out.println("name = " + beanDefinitionName + " object = " + bean);
         }
