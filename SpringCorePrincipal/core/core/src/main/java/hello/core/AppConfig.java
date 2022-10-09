@@ -11,6 +11,8 @@ import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 
 //배우를 지정해주는 기획자 역할을 하는 클래스이다.
+//기획자는 공연 참여자인 구현 객체들을 모두 알아야한다.
+//구성 영역이 담당한다.
 public class AppConfig {
 
     public MemberService memberService() {
