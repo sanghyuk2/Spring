@@ -6,7 +6,10 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
 
@@ -26,6 +29,7 @@ public class OrderServiceImpl implements OrderService{
     //프로그래머는 "추상화에 의존해야지, 구체화에 의존하면 안된다."
     //또한 소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야한다.
     //AppConfig 클래스가 구체화를 다루면서, 클라이언트인 OrderServiceImpl 내부의 DiscountPolicy를 Fix로 하든 Rate로 하든 변경되는 코드가 없다. == OCP 성립!
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
