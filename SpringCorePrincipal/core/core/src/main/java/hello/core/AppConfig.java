@@ -15,7 +15,10 @@ import org.springframework.context.annotation.Configuration;
 // @Bean memberService --> MemoryMemberRepository()
 // @Bean orderService --> MemoryMemberRepository()
 //싱글톤 깨지는것 아닌가?
-//
+//순수한 자바 코드만을 보고 판단하면 접근 횟수만큼 MemoryMemberRepository 가 생길 것 같지만 @Configuration 때문에 실상은 그렇지 않다.
+//@Configuration 어노테이션이 설정정보(AppConfig)의 바이트 조작된 AppConfigCGLIB를 만들어 빈으로 등록한다.
+//@Bean이 붙은 메서드마다 스프링 빈의 존재유무를 판단한 후 존재 할 시 기존의 설정 코드(AppConfig)에서 반환하고, 없을 시 생성해서 스프링 빈으로 등록하는 동적인 모습을 보여준다.
+//따라서 싱글톤이 깨지는 듯 보였던 아래의 코드도 @Configuration 어노테이션이 막아준다.
 
 //예상
 //call AppConfig.memberService

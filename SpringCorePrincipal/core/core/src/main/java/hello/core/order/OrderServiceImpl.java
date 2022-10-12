@@ -18,6 +18,7 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
     //인터페이스에만 의존하게끔 한다.
+    //final이 붙으면 값이 무조건 있어야 한다.
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
