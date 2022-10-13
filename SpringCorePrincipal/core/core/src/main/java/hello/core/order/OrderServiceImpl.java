@@ -19,8 +19,14 @@ public class OrderServiceImpl implements OrderService{
 
     //인터페이스에만 의존하게끔 한다.
     //final이 붙으면 값이 무조건 있어야 한다.
-    @Autowired private MemberRepository memberRepository;
-    @Autowired private DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     //클라이언트 객체(OrderServiceImpl)는 직접 구현 객체를 생성하고 연결하고 실행까지 하는 다양한 역할을 담당했엇다.
     //하지만 AppConfig를 생성하면서, 구현 객체를 생성하고 담당하는 역할은 AppConfig 내부에서 담당하게끔 되었다.
