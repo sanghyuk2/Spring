@@ -19,8 +19,8 @@ public class OrderServiceImpl implements OrderService{
 
     //인터페이스에만 의존하게끔 한다.
     //final이 붙으면 값이 무조건 있어야 한다.
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    @Autowired private MemberRepository memberRepository;
+    @Autowired private DiscountPolicy discountPolicy;
 
     //클라이언트 객체(OrderServiceImpl)는 직접 구현 객체를 생성하고 연결하고 실행까지 하는 다양한 역할을 담당했엇다.
     //하지만 AppConfig를 생성하면서, 구현 객체를 생성하고 담당하는 역할은 AppConfig 내부에서 담당하게끔 되었다.
@@ -30,11 +30,11 @@ public class OrderServiceImpl implements OrderService{
     //프로그래머는 "추상화에 의존해야지, 구체화에 의존하면 안된다."
     //또한 소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야한다.
     //AppConfig 클래스가 구체화를 다루면서, 클라이언트인 OrderServiceImpl 내부의 DiscountPolicy를 Fix로 하든 Rate로 하든 변경되는 코드가 없다. == OCP 성립!
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
