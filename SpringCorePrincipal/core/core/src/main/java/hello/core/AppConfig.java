@@ -61,6 +61,7 @@ public class AppConfig {
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+//        return null;
     }
 
     //리팩터링을 함으로써 DiscountPolicy의 역할이 드러남.

@@ -6,27 +6,19 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+//ctrl + f12를 누르면 작성한 생성자 코드가 없더라도 생성자가 롬복에 의해 작성된 것을 확인할 수 있다.
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
-
-//    final keyword를 사용하면 무조건 값을 할당해야한다.
-//    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
-//    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-
     //인터페이스에만 의존하게끔 한다.
-    //final이 붙으면 값이 무조건 있어야 한다.
+    //final이 붙으면 값이 무조건 있어야 한다. 한 번 값이 정해지면 불변하다.
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
-
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
 
     //클라이언트 객체(OrderServiceImpl)는 직접 구현 객체를 생성하고 연결하고 실행까지 하는 다양한 역할을 담당했엇다.
     //하지만 AppConfig를 생성하면서, 구현 객체를 생성하고 담당하는 역할은 AppConfig 내부에서 담당하게끔 되었다.

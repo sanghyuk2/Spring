@@ -37,6 +37,7 @@ public class OrderServiceTest {
 //    void fieldInjectionTest() {
 //        OrderServiceImpl orderService = new OrderServiceImpl();
 //        //NullPointerException이 발생한다.
+    //
 //        //이유는 스프링 없이 순수한 자바로 테스트 하려니 안되는것이다.
 //        //즉, memberRepository, discountPolicy에 원하는 값을 넣어줄수 없다는 뜻이다.
 //        //실행하기 위해서는 OrderServiceImpl에 setter를 만들어주어야한다.
