@@ -15,7 +15,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
-//의도적으로 해당 타입의 스프링 빈이 다 필요한 경우!
+//의도적으로 해당 타입의 스프링 빈이 다 필요한 경우! (동적으로 변경할 때)
 //클라이언트가 할인의 종류를 선택할 수 있다고 가정
 public class AllBeanTest {
     @Test

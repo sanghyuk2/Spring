@@ -49,7 +49,7 @@ public class AppConfig {
        return new MemberServiceImpl(memberRepository());
     }
 
-    //리팩터링을 함으로써 MemberRepository의 역할이 드러남.
+    //리팩터링을 함으로써 MemberRepository의 역할이 드러남. 이름만 보고서 어떤 역할인지 알 수 있게 됨.
     //동시에 memberService()와 orderService()에 동시에 사용되던 new MemoryMemberRepository를 중복제거하였다.
     @Bean
     public MemberRepository memberRepository() {
