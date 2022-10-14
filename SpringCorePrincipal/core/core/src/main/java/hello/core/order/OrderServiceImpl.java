@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService{
     //또한 소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야한다.
     //AppConfig 클래스가 구체화를 다루면서, 클라이언트인 OrderServiceImpl 내부의 DiscountPolicy를 Fix로 하든 Rate로 하든 변경되는 코드가 없다. == OCP 성립!
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
