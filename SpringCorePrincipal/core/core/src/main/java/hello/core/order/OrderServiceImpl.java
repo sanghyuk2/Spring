@@ -8,11 +8,12 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 //ctrl + f12를 누르면 작성한 생성자 코드가 없더라도 생성자가 롬복에 의해 작성된 것을 확인할 수 있다.
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     //인터페이스에만 의존하게끔 한다.
@@ -28,11 +29,11 @@ public class OrderServiceImpl implements OrderService{
     //프로그래머는 "추상화에 의존해야지, 구체화에 의존하면 안된다."
     //또한 소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야한다.
     //AppConfig 클래스가 구체화를 다루면서, 클라이언트인 OrderServiceImpl 내부의 DiscountPolicy를 Fix로 하든 Rate로 하든 변경되는 코드가 없다. == OCP 성립!
-//    @Autowired
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
