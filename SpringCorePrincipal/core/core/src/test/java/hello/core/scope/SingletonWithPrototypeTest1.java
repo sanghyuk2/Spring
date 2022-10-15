@@ -55,6 +55,7 @@ public class SingletonWithPrototypeTest1 {
         private Provider<PrototypeBean> prototypeBeanProvider;
 
         public int logic() {
+            //logic 메서드를 사용할 때 마다 스프링 컨테이너에서 빈을 찾아 반환하게끔 한다 : DL(Dependency Lookup)
             //getObject() : 프로토타입 빈을 찾아서 반환해준다. 스프링 컨테이너 기능의 전체를 활용하지 않고 부분활용한다.
             PrototypeBean prototypeBean = prototypeBeanProvider.get();
             prototypeBean.addCount();
@@ -87,3 +88,20 @@ public class SingletonWithPrototypeTest1 {
         }
     }
 }
+
+/* DI 방식
+* static class ClientBean {
+ private final PrototypeBean prototypeBean;
+ * //Autowired를 통하여 DI를 해서 이용하기에 프로토타입빈이 싱글톤 빈에 의존한다.
+ @Autowired
+ public ClientBean(PrototypeBean prototypeBean) {
+ this.prototypeBean = prototypeBean;
+ }
+ public int logic() {
+ prototypeBean.addCount();
+ int count = prototypeBean.getCount();
+ return count;
+ }
+ }*/
+
+//https://hjhng125.github.io/spring/dependency-lookup/

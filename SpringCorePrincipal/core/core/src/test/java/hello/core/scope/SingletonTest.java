@@ -12,8 +12,10 @@ public class SingletonTest {
 
     @Test
     void singletonBeanFind() {
+        System.out.println("put into Spring container");
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SingletonBean.class);
 
+        System.out.println("get bean");
         SingletonBean singletonBean1 = ac.getBean(SingletonBean.class);
         SingletonBean singletonBean2 = ac.getBean(SingletonBean.class);
         System.out.println("singletonBean1 = " + singletonBean1);

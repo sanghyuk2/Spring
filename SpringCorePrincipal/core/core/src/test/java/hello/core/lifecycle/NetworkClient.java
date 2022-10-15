@@ -57,4 +57,9 @@ public class NetworkClient {
         System.out.println("NetworkClient.close");
         disconnect();
     }
+    
+    //@PostConstruct와 @PreDestroy의 단점은 외부 라이브러리에는 사용못한다는 점이다.
+    //외부 라이브러리란 오픈소스를 의미하는데, 오픈소스는 이미 컴파일된 .class파일들을 모아둔 jar파일이기 때문에 수정이 불가하다.
+    //외부 라이브러리에서 초기화메소드와 소멸전 메소드를 호출하기 위해서는 외부 라이브러리 소스 코드 위에 어노테이션을 붙여야하는데, 수정이 불가하기 때문에 사용하지 못한다.
+    //따라서 이 경우에는 @Bean(initMethod = " ", destroyMethod = " ") 를 사용하자
 }
