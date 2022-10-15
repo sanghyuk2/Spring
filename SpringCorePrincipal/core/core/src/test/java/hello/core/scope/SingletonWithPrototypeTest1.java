@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,11 +52,11 @@ public class SingletonWithPrototypeTest1 {
 
         //ObjectProvider가 ObjectFactory 상속. ObjectFactory는 getObject()만 있다.
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private Provider<PrototypeBean> prototypeBeanProvider;
 
         public int logic() {
             //getObject() : 프로토타입 빈을 찾아서 반환해준다. 스프링 컨테이너 기능의 전체를 활용하지 않고 부분활용한다.
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = prototypeBeanProvider.get();
             prototypeBean.addCount();
             //ctrl alt N : 메소드 합치기
             int count = prototypeBean.getCount();
