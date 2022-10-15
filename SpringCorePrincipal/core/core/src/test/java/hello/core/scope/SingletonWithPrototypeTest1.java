@@ -3,6 +3,8 @@ package hello.core.scope;
 import ch.qos.logback.core.net.server.Client;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -39,20 +41,21 @@ public class SingletonWithPrototypeTest1 {
 
         ClientBean clientBean2 = ac.getBean(ClientBean.class);
         int count2 = clientBean2.logic();
-        assertThat(count2).isEqualTo(2);
+        assertThat(count2).isEqualTo(1);
 
     }
 
     @Scope("singleton")
     static class ClientBean {
-        private final PrototypeBean prototypeBean; //생성 시점에 주입
 
+
+        //ObjectProvider가 ObjectFactory 상속. ObjectFactory는 getObject()만 있다.
         @Autowired
-        public ClientBean(PrototypeBean prototypeBean) {
-            this.prototypeBean = prototypeBean;
-        }
+        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
 
         public int logic() {
+            //getObject() : 프로토타입 빈을 찾아서 반환해준다. 스프링 컨테이너 기능의 전체를 활용하지 않고 부분활용한다.
+            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
             prototypeBean.addCount();
             //ctrl alt N : 메소드 합치기
             int count = prototypeBean.getCount();
