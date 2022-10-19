@@ -2,11 +2,7 @@ package hellocopy.corecopy.member;
 
 public class MemberServiceImpl implements MemberService{
 
-    MemberRepository memberRepository;
-
-    public MemberServiceImpl(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
+    MemberRepository memberRepository = new MemoryMemberRepository();
 
     @Override
     public void join(Member member) {
