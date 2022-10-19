@@ -35,6 +35,10 @@ class ApplicationContextBasicFindTest {
 
     }
 
+    //참고: 구체 타입으로 조회하면 변경시 유연성이 떨어진다.
+    //역할과 구현을 구분하고, 클라이언트 객체는 역할에 의존하는 것이 좋다.
+    //이는 테스트 코드에서도 유효하다.
+    //구현체 타입을 의존하게 되면 확장에 유연하지 못하며, 유지보수 비용이 증가한다.
     @Test
     @DisplayName("구체 타입으로 조회")
     void findBeanByName2() {
