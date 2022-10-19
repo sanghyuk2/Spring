@@ -30,6 +30,7 @@ class ApplicationContextInfoTest {
         //ac.getBeanDefinitionNames() : 스프링에 등록된 모든 빈 이름을 조회한다
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
+            //.getBeanDefinition()은 ApplicationContext가 아닌 AnnotationConfigApplicationContext에 들어있다.
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
 
             if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
