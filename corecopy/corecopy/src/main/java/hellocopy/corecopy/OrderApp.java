@@ -8,8 +8,12 @@ import hellocopy.corecopy.order.OrderServiceImpl;
 public class OrderApp {
     public static void main(String[] args) {
         //MemberRepository 안 쓴 이유 : 클라이언트는 데이터베이스에 직접적으로 접근하면 안된다.
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+//        MemberService memberService = new MemberServiceImpl();
+//        OrderService orderService = new OrderServiceImpl();
+
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         //멤버 생성 후 데이터베이스에 저장
         long memberId = 1L;

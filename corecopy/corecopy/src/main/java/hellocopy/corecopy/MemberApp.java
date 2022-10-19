@@ -7,7 +7,8 @@ import hellocopy.corecopy.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
 
         //member 객체 생성
         Member member = new Member(1L, "memberA", Grade.VIP);
