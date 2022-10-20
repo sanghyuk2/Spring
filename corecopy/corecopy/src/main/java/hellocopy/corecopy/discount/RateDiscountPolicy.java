@@ -2,7 +2,9 @@ package hellocopy.corecopy.discount;
 
 import hellocopy.corecopy.member.Grade;
 import hellocopy.corecopy.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private int discountPercent = 10;
