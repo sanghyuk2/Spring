@@ -42,6 +42,7 @@ class ApplicationContextBasicFindTest {
     @Test
     @DisplayName("구체 타입으로 조회")
     void findBeanByName2() {
+        //DIP를 위배하고 유연성이 떨어진다.
         MemberServiceImpl memberService = ac.getBean(MemberServiceImpl.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }

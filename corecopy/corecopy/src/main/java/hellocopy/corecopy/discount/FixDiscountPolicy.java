@@ -2,7 +2,11 @@ package hellocopy.corecopy.discount;
 
 import hellocopy.corecopy.member.Grade;
 import hellocopy.corecopy.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
+@Qualifier("fixDiscountPolicy")
 public class FixDiscountPolicy implements DiscountPolicy {
 
     private int discountFixAmount = 1000;
