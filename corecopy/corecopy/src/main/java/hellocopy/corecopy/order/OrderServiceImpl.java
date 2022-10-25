@@ -1,5 +1,6 @@
 package hellocopy.corecopy.order;
 
+import hellocopy.corecopy.annotation.MainDiscountPolicy;
 import hellocopy.corecopy.discount.DiscountPolicy;
 import hellocopy.corecopy.discount.FixDiscountPolicy;
 import hellocopy.corecopy.member.Member;
@@ -17,7 +18,7 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository,@MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }

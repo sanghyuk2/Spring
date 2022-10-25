@@ -1,5 +1,6 @@
 package hellocopy.corecopy.discount;
 
+import hellocopy.corecopy.annotation.MainDiscountPolicy;
 import hellocopy.corecopy.member.Grade;
 import hellocopy.corecopy.member.Member;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,7 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private int discountPercent = 10;
