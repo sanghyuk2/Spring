@@ -10,6 +10,7 @@ import org.springframework.context.annotation.FilterType;
 
 import static org.springframework.context.annotation.ComponentScan.*;
 
+//OCP, DIP를 지킬 수 있다.
 @Configuration
 @ComponentScan(
         excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
